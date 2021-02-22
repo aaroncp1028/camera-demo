@@ -66,7 +66,7 @@ const App: () => React$Node = () => {
   const cameraRef = useRef(null);
   const handleShoot = async () => {
     if (cameraRef.current && !loading) {
-      const options = {quality: 0.5, base64: false};
+      const options = {quality: 0.99, base64: false};
       const image = await cameraRef.current.takePictureAsync(options);
       console.log(image);
       var data = new FormData();
@@ -88,7 +88,7 @@ const App: () => React$Node = () => {
     else prepareRatio('3:2');
   };
   const uploadImage = (data) => {
-    let base_url = 'https://hey.com/post';
+    let base_url = 'https://cctrphwvh.ngrok.io/later/photo';
     setLoading(true);
     axios
       .post(base_url, data, {
