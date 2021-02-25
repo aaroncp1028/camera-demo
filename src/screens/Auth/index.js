@@ -44,7 +44,7 @@ const AuthScreen = ({navigation}) => {
           )}
           <View style={styles.inputRow}>
             <Text style={styles.rowText}></Text>
-            <TouchableOpacity style={{flex: 5}}>
+            <TouchableOpacity style={{flex: 5}} onPress={()=>navigation.navigate('Home')}>
               <Text style={styles.btnSignup}>
                 {regMode ? 'Sign Up' : 'Log In'}
               </Text>
@@ -52,7 +52,7 @@ const AuthScreen = ({navigation}) => {
           </View>
 
           <TouchableOpacity
-            style={styles.inputRow}
+            style={[styles.inputRow]}
             onPress={() => {
               setRegMode(!regMode);
             }}>

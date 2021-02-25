@@ -1,5 +1,6 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import Spinner from 'react-native-loading-spinner-overlay';
 
 import Home from '@screens/Home'
 import Settings from '@screens/Settings'

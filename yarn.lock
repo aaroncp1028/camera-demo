@@ -5658,6 +5658,13 @@ react-native-system-setting@^1.7.6:
   resolved "https://registry.yarnpkg.com/react-native-system-setting/-/react-native-system-setting-1.7.6.tgz#43633604ac1bd5fd906acdbffa627a1998d2345a"
   integrity sha512-nBnIK5Xnyu8XRRA3BMzRI54oYlSBKc0oOTQdZOCEeOvn4ltS1nk2shj/vtMQe6khXvuhai3vIc+g7DcsOcr5+w==
 
+react-native-toast-message@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/react-native-toast-message/-/react-native-toast-message-1.4.7.tgz#7db334f1425036181b634e5bd032f81ac8c00320"
+  integrity sha512-MTY/n9z4XSqb/YHgUBcLUHJf0QQtnVKgPcw99BUqE3E2pAh2BOjO7C0UrC9SmjBvRz68o1FCfYox5yhwJBAvHQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react-native@0.63.4:
   version "0.63.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"

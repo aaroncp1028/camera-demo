@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     paddingVertical: 3,
   },
   question:{
-      textDecorationLine: 'underline'
+      textDecorationLine: 'underline',
   },
   title: {
     fontSize: 25,

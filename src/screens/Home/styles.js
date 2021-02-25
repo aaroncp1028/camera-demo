@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   },
   winder:{
     position: 'absolute',
-    width: SCREEN_WIDTH/3/5*3,
+    width: IS_TABLET? SCREEN_WIDTH/3/5*3 - 80: SCREEN_WIDTH/3/5*3,
     height: BUTTON_SIZE,
     right: LEFT_WIDTH /4,
     top: IS_TABLET?50:0,
