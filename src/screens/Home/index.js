@@ -31,7 +31,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 import axios from 'axios';
 import Orientation from 'react-native-orientation-locker';
-import {RNCamera} from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
 import SystemSetting from 'react-native-system-setting';
 import SwipeButton from 'rn-swipe-button';
 
