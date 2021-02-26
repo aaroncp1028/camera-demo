@@ -104,7 +104,7 @@ const AuthScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.title}>Welcome to Later.com</Text>
+        <Text style={styles.title}>Welcome to Later</Text>
         <Image style={styles.logo} source={logo_img}></Image>
       </View>
     </View>
