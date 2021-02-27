@@ -20,7 +20,7 @@ import {
   LEFT_WIDTH,
   SCREEN_WIDTH,
 } from '@themes/dimension';
-import styles from '@root/screens/Settings/styles';
+import styles from './styles';
 
 const body_left = require('@assets/images/body-left.png')
 const body_main = require('@assets/images/body-center.png')

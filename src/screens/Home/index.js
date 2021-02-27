@@ -34,6 +34,7 @@ import Orientation from 'react-native-orientation-locker';
 import { RNCamera } from 'react-native-camera';
 import SystemSetting from 'react-native-system-setting';
 import SwipeButton from 'rn-swipe-button';
+import { useIsFocused } from '@react-navigation/native';
 
 import Background from '@components/CameraBody';
 
@@ -55,6 +56,7 @@ const Home = ({navigation}) => {
   const prepareRatio = async (DESIRED_RATIO) => {
     setRatio(DESIRED_RATIO);
   };
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     Orientation.lockToLandscape();
@@ -70,6 +72,12 @@ const Home = ({navigation}) => {
       DeviceEventEmitter.removeListener(listener);
     };
   }, []);
+
+  useEffect(()=>{
+    if(isFocused){
+      Orientation.lockToLandscape();
+    }
+  },[isFocused])
   const handleVolume = (data) => {
     handleShoot();
   };
@@ -160,11 +168,11 @@ const Home = ({navigation}) => {
   }, [ratio]);
   return (
     <>
-      <StatusBar barStyle="dark-content" />
       <SafeAreaView
         style={{
           backgroundColor: 'grey',
           flexGrow: 1,
+          flexDirection:'column',
           justifyContent: 'center',
           alignItems: 'center',
         }}>

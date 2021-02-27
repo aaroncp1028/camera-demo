@@ -1,9 +1,11 @@
 import * as actionTypes from '@root/store/actionTypes'
 import produce from 'immer'
+import { Axios } from '@root/utils'
 
 const initialState = {
   error: null,
   token: null,
+  isNew: 0
 }
 
 const authReducer = (state = initialState, action) => {
@@ -18,7 +20,11 @@ const authReducer = (state = initialState, action) => {
         draft.error = action.payload
       })
     }
-    
+    case actionTypes.SET_IS_NEW:{
+      return produce(state, (draft) => {
+        draft.isNew = action.payload
+      })
+    }
     default: {
       return state
     }

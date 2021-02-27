@@ -7,3 +7,5 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
 export const SET_TOKEN = 'SET_TOKEN'
 export const SET_ERROR = 'SET_ERROR'
+export const SET_CAMERAS = 'SET_CAMERAS'
+export const SET_IS_NEW = 'SET_IS_NEW'

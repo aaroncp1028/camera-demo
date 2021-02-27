@@ -1,10 +1,19 @@
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useEffect, useState, useCallback, useRef} from 'react';
 import PropTypes from 'prop-types';
-import {Text, TextInput, TouchableOpacity, View, Image} from 'react-native';
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Image,
+  ScrollView,
+} from 'react-native';
+import BouncyCheckbox from 'react-native-bouncy-checkbox';
+
 import Orientation from 'react-native-orientation-locker';
 import { useIsFocused } from '@react-navigation/native';
-import { useDispatch, useSelector } from 'react-redux'
-import { register, login } from '@store/actions'
+import { useDispatch, useSelector } from 'react-redux';
+import { register, login } from '@store/actions';
 
 import styles from './styles';
 import Toast from 'react-native-toast-message';
@@ -19,93 +28,154 @@ const AuthScreen = ({navigation}) => {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
-
-  const token = useSelector((state) => state.auth.token)
+  const [showPassword, setShowPassword] = useState(false)
+  const error = useSelector((state) => state.auth.error?.data);
+  const isNew = useSelector((state) => state.auth.isNew);
+  const [formError, setFormError] = useState({});
 
   useEffect(() => {
-    if (isFocused) Orientation.lockToPortrait();
+    if(isNew){
+      setRegMode(false)
+    }else{
+      setRegMode(true)
+    }
+  }, [isNew])
+  useEffect(() => {
+    if (isFocused) {
+      Orientation.lockToPortrait();
+      clearForm()
+    }
   }, [isFocused]);
-
-  useEffect(()=>{
-    token && navigation.navigate('Home')
-  }, [token])
-
 
   const hintText = useCallback(() => {
     if (regMode) return 'Already have an account? Log In';
     else return `Don't have an account? Sign Up`;
   }, [regMode]);
 
-  const handleSubmit = () =>{
-    if(regMode){
+  const handleSubmit = () => {
+    if (regMode) {
       const data = {
         email,
         password,
-        name
-      }
-      dispatch(register(data))
-    }else{
-      const data ={
+        name,
+      };
+      dispatch(register(data));
+    } else {
+      const data = {
         email,
-        password
-      }
-      dispatch(login(data))
+        password,
+      };
+      dispatch(login(data));
     }
-  }
-  const handleEmail = (e) =>{
-    setEmail(e)
-  }
-  const handleName = (e) =>{
-    setName(e)
-  }
-  const handlePassword = (e) =>{
-    setPassword(e)
-  }
-  
+  };
+  const handleEmail = (e) => {
+    setEmail(e);
+    setFormError({...formError, email: null});
+  };
+  const handleName = (e) => {
+    setName(e);
+    setFormError({...formError, name: null});
+  };
+  const handlePassword = (e) => {
+    setPassword(e);
+    setFormError({...formError, password: null});
+  };
+
+  useEffect(() => {
+    if (error) {
+      setFormError(error);
+    }
+  }, [error]);
+
+  const clearForm = () => {
+    setFormError(null);
+    emailRef.current?.clear();
+    passwordRef.current?.clear();
+    nameRef.current?.clear();
+  };
+
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.box}>
-        <View style={styles.inputBox}>
-          {regMode && (
-            <View style={styles.inputRow}>
-              <Text style={styles.rowText}>Name:</Text>
-              <TextInput style={styles.rowInput} onChangeText={handleName}></TextInput>
+    <View style={{flexGrow: 1, backgroundColor: '#93a0e5'}}>
+      <View style={styles.container}>
+        <ScrollView style={styles.scroll}>
+          <View style={styles.box}>
+            <Text style={styles.title}>Welcome to Later</Text>
+            <Image style={styles.logo} source={logo_img}></Image>
+            <View style={styles.inputBox}>
+              {regMode && (
+                <View style={styles.inputRow}>
+                  <Text style={styles.rowText}>Full Name (Required)</Text>
+                  {formError && formError.name && (
+                    <Text style={styles.errorText}>{formError.name}</Text>
+                  )}
+                  <TextInput
+                    style={styles.rowInput}
+                    autoFocus={true}
+                    ref={nameRef}
+                    onChangeText={handleName}></TextInput>
+                </View>
+              )}
+
+              <View style={styles.inputRow}>
+                <Text style={styles.rowText} keyboardType="email-address">
+                  E-Mail (Required)
+                </Text>
+                {formError && formError.email && (
+                  <Text style={styles.errorText}>{formError.email}</Text>
+                )}
+                <TextInput
+                  style={styles.rowInput}
+                  ref={emailRef}
+                  onChangeText={handleEmail}></TextInput>
+              </View>
+              <View style={styles.inputRow}>
+                <Text style={styles.rowText}>Password (Required)</Text>
+                {formError && formError.password && (
+                  <Text style={styles.errorText}>{formError.password}</Text>
+                )}
+                <TextInput
+                  style={styles.rowInput}
+                  secureTextEntry={!showPassword}
+                  ref={passwordRef}
+                  onChangeText={handlePassword}></TextInput>
+                <BouncyCheckbox
+                  showPassword
+                  textColor="#000"
+                  fillColor="grey"
+                  borderRadius={0}
+                  borderColor='grey'
+                  text="Show password"
+                  textDecoration={'false'}
+                  style={{width: "90%"}}
+                  onPress={() => setShowPassword(!showPassword)}
+                />
+              </View>
+
+              <View style={styles.inputRow}>
+                <TouchableOpacity
+                  style={{alignSelf: 'flex-start', paddingLeft: '5%'}}
+                  onPress={() => handleSubmit()}>
+                  <Text style={styles.btnSignup}>
+                    {regMode ? 'Sign Up' : 'Log In'}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <TouchableOpacity
+                style={[styles.inputRow]}
+                onPress={() => {
+                  setRegMode(!regMode);
+                  clearForm();
+                }}>
+                <Text style={styles.question}>{hintText()}</Text>
+              </TouchableOpacity>
             </View>
-          )}
-
-          <View style={styles.inputRow}>
-            <Text style={styles.rowText} textContentType='email'>Email:</Text>
-            <TextInput style={styles.rowInput} onChangeText={handleEmail}></TextInput>
           </View>
-          <View style={styles.inputRow}>
-            <Text style={styles.rowText}>Password:</Text>
-            <TextInput style={styles.rowInput} secureTextEntry={true} onChangeText={handlePassword}></TextInput>
-          </View>
-          {!regMode && (
-            <View style={styles.inputRow}>
-              <TextInput editable={false} style={styles.hidden}></TextInput>
-            </View>
-          )}
-          <View style={styles.inputRow}>
-            <Text style={styles.rowText}></Text>
-            <TouchableOpacity style={{flex: 5}} onPress={()=>handleSubmit()}>
-              <Text style={styles.btnSignup}>
-                {regMode ? 'Sign Up' : 'Log In'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity
-            style={[styles.inputRow]}
-            onPress={() => {
-              setRegMode(!regMode);
-            }}>
-            <Text style={styles.question}>{hintText()}</Text>
-          </TouchableOpacity>
-        </View>
-
-        <Text style={styles.title}>Welcome to Later.com</Text>
-        <Image style={styles.logo} source={logo_img}></Image>
+        </ScrollView>
       </View>
     </View>
   );
