@@ -43,21 +43,18 @@ const styles = StyleSheet.create({
   },
   inputRow:{
     marginVertical: 5,
-  
     flexDirection: 'column',
     alignItems:'center',
   },
   rowText:{
     width: "90%",
-    maxWidth: 300,
     color: '#222',
     textAlign:'left',
     paddingRight: 10,
   },
   rowInput:{
     marginTop: 10,
-    width: "90%",
-    maxWidth: 300,
+    width: "95%",
     borderWidth : 1,
     paddingVertical: 3,
   },
@@ -71,10 +68,12 @@ const styles = StyleSheet.create({
   btnSignup:{
       borderWidth: 1,
       width: 100,
-      paddingLeft: 20,
       borderRadius: 2,
       height: 40,
-      textAlignVertical:"center"
+      alignItems: 'center',
+      justifyContent: "center",
+      alignSelf: 'flex-start',
+      marginLeft: '5%'
   },
   logo:{
       width : 100,

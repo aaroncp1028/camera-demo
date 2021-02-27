@@ -157,9 +157,9 @@ const AuthScreen = ({navigation}) => {
 
               <View style={styles.inputRow}>
                 <TouchableOpacity
-                  style={{alignSelf: 'flex-start', paddingLeft: '5%'}}
+                  style={styles.btnSignup}
                   onPress={() => handleSubmit()}>
-                  <Text style={styles.btnSignup}>
+                  <Text>
                     {regMode ? 'Sign Up' : 'Log In'}
                   </Text>
                 </TouchableOpacity>

@@ -46,7 +46,7 @@ function BottomTabbed(props) {
   useEffect(() => {
     if (token && token == 'NULL') {
       console.log('======go to No tab======', token);
-      props.navigation.navigate('NoTab',{name:"Auth"});
+      props.navigation.navigate('Auth');
       return
     }
   }, [token]);
