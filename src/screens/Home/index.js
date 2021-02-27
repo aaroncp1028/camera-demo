@@ -99,7 +99,9 @@ const Home = ({navigation}) => {
       uploadImage(data);
     }
   };
-  const handleSettings = () => {};
+  const handleSettings = () => {
+    navigation.navigate("BottomTabbed", {name: "Settings"})
+  };
   const handleFlash = () => {
     if (flash) setFlash(false);
     else setFlash(true);

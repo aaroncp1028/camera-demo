@@ -6,13 +6,17 @@ import { useIsFocused } from '@react-navigation/native';
 
 import { getAvaiableCamera } from '@store/actions'
 import styles from './styles'
+import Orientation from 'react-native-orientation-locker';
 
 const Settings = ({ navigation }) => {
   const dispatch = useDispatch()
   const isFocused = useIsFocused()
   useEffect(()=>{
-    if(isFocused)
+    if(isFocused){
+      Orientation.lockToPortrait()
       dispatch(getAvaiableCamera())
+    }
+      
   },[isFocused])
 
   return (

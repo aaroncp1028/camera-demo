@@ -47,11 +47,13 @@ const CustomTabBar = (props) => {
           <Image source={gearImg} style={{resizeMode: 'contain'}}></Image>
         </TouchableOpacity>
       </View>
-      <View style={{flex: 3.5, flexDirection: 'row', paddingTop: 60}}>
+      <View style={{flex: 3.5, flexDirection: 'row', paddingTop: 60, justifyContent:'center'}}>
         <TouchableOpacity>
           <Image source={galleryImg} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={()=>navigation.navigate('Home')}
+        >
           <Image source={playImg} />
         </TouchableOpacity>
       </View>
