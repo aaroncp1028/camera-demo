@@ -7,10 +7,8 @@ import {
 } from '@themes/dimension';
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'transparent',
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
-    position: 'absolute',
+    backgroundColor: '#4645c3',
+    height: SCREEN_WIDTH,
     flexDirection: 'row',
   },
   title: {
