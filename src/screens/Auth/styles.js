@@ -67,13 +67,13 @@ const styles = StyleSheet.create({
   },
   btnSignup:{
       borderWidth: 1,
-      width: 100,
+      width: 120,
       borderRadius: 2,
       height: 40,
       alignItems: 'center',
       justifyContent: "center",
       alignSelf: 'flex-start',
-      marginLeft: '5%'
+      marginLeft: '2.5%'
   },
   logo:{
       width : 100,

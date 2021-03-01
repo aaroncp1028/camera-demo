@@ -31,7 +31,11 @@ const AuthScreen = ({navigation}) => {
   const [showPassword, setShowPassword] = useState(false)
   const error = useSelector((state) => state.auth.error?.data);
   const isNew = useSelector((state) => state.auth.isNew);
-  const [formError, setFormError] = useState({});
+  const [formError, setFormError] = useState({
+    password : [null],
+    email: [null],
+    name: [null]
+  });
 
   useEffect(() => {
     if(isNew){
@@ -53,6 +57,8 @@ const AuthScreen = ({navigation}) => {
   }, [regMode]);
 
   const handleSubmit = () => {
+    const isValid = formValidation()
+    if(!isValid) return
     if (regMode) {
       const data = {
         email,
@@ -80,9 +86,41 @@ const AuthScreen = ({navigation}) => {
     setPassword(e);
     setFormError({...formError, password: null});
   };
+  const validateEmail = () => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+  const formValidation = () =>{
 
+    let result = true
+    let ferror = {}
+    if( !password || password.length < 9){
+      ferror['password'] = ['Password should be at least 8 letters']
+      result = false
+    }
+    if(!email){
+      ferror['email'] = ["E-Mail can't be blank"]
+      result = false
+    }else{
+      if(!validateEmail()){
+        ferror['email'] = ["Invalid E-Mail"]
+        result = false
+      }
+    }
+    
+    if( !name && regMode){
+
+      ferror['name'] = [`Name can't be blank`]
+      result = false
+    }
+    console.log("===========validation============", ferror)
+    console.log("===========validation old state============", formError)
+    setFormError(ferror)
+    return result
+  }
   useEffect(() => {
     if (error) {
+      console.log("===========error from api=======", error)
       setFormError(error);
     }
   }, [error]);
@@ -92,6 +130,7 @@ const AuthScreen = ({navigation}) => {
     emailRef.current?.clear();
     passwordRef.current?.clear();
     nameRef.current?.clear();
+    setShowPassword(false)
   };
 
   const nameRef = useRef(null);
@@ -130,6 +169,7 @@ const AuthScreen = ({navigation}) => {
                 <TextInput
                   style={styles.rowInput}
                   ref={emailRef}
+                  keyboardType="email-address"
                   onChangeText={handleEmail}></TextInput>
               </View>
               <View style={styles.inputRow}>
@@ -143,14 +183,14 @@ const AuthScreen = ({navigation}) => {
                   ref={passwordRef}
                   onChangeText={handlePassword}></TextInput>
                 <BouncyCheckbox
-                  showPassword
+                  isChecked={showPassword}
                   textColor="#000"
                   fillColor="grey"
                   borderRadius={0}
                   borderColor='grey'
                   text="Show password"
                   textDecoration={'false'}
-                  style={{width: "90%"}}
+                  style={{width: "95%"}}
                   onPress={() => setShowPassword(!showPassword)}
                 />
               </View>

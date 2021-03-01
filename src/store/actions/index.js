@@ -45,11 +45,11 @@ export function register(data) {
         if (resp.status === 200) {
           console.log(
             '==========success getting history result from cloud===============',
-            resp.data.data
+            resp.data.token
           )
           dispatch({
             type: actionTypes.SET_TOKEN,
-            payload: resp.data.data,
+            payload: resp.data.token,
           })
         } else {
           dispatch({
