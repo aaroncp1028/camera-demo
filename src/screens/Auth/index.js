@@ -94,7 +94,7 @@ const AuthScreen = ({navigation}) => {
 
     let result = true
     let ferror = {}
-    if( !password || password.length < 9){
+    if( !password || password.length < 8){
       ferror['password'] = ['Password should be at least 8 letters']
       result = false
     }
