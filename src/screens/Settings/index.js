@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View , SafeAreaView} from 'react-native'
 import { useDispatch } from 'react-redux'
 import { useIsFocused } from '@react-navigation/native';
 
@@ -20,10 +20,12 @@ const Settings = ({ navigation }) => {
   },[isFocused])
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity >
-        <Text style={styles.title}>Goto Scene 1</Text>
-      </TouchableOpacity>
+    <View>
+      <SafeAreaView style={styles.container}>
+        <TouchableOpacity >
+          <Text style={styles.title}>Goto Scene 1</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
     </View>
   )
 }

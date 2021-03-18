@@ -1,14 +1,16 @@
 import React, {useEffect} from 'react';
 import {View, Image, Text, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
-import {DARK_BLUE, GREY} from '@themes/colors';
-import {logout} from '@store/actions';
-import {useDispatch} from 'react-redux';
-
-const backImg = require('@assets/images/tab_back_img.png');
-const gearImg = require('@assets/images/btn_gear_img.png');
-const galleryImg = require('@assets/images/btn_gallery_img.png');
-const playImg = require('@assets/images/btn_play_img.png');
+import { DARK_BLUE, GREY } from '@themes/colors';
+import { logout } from '@store/actions';
+import { useDispatch } from 'react-redux';
+import styles from './styles';
+const backImg = require('@assets/images/bottom-nav/bottom-back.png');
+const gearImg = require('@assets/images/bottom-nav/gear.png');
+const galleryImg = require('@assets/images/bottom-nav/photo.png');
+const playImg = require('@assets/images/bottom-nav/play.png');
+const orderImg = require('@assets/images/bottom-nav/orders.png')
+const accountImg = require('@assets/images/bottom-nav/account.png')
 const CustomTabBar = (props) => {
   const {navigation} = props;
   const state = navigation.dangerouslyGetState();
@@ -28,12 +30,7 @@ const CustomTabBar = (props) => {
   return (
     <View style={{height: 0}}>
       <View
-        style={{
-          height: 140,
-          top: -140,
-          backgroundColor: 'transparent',
-          flexDirection: 'row',
-        }}>
+        style={styles.container}>
         <Image
           source={backImg}
           style={{
@@ -43,63 +40,43 @@ const CustomTabBar = (props) => {
             height: '100%',
           }}
         />
-        <View style={{flex: 1}}>
+        <View style={{position:'absolute'}}>
           <TouchableOpacity
             style={{
               alignItems: 'center',
               justifyContent: 'center',
-              paddingTop: 10,
+              paddingTop: 20,
+              left: 20
             }}>
-            <Image source={gearImg} style={{resizeMode: 'contain'}}></Image>
+            <Image source={gearImg} style={styles.gear}></Image>
           </TouchableOpacity>
         </View>
         <View
           style={{
             flex: 3.5,
             flexDirection: 'row',
-            paddingTop: 60,
-            justifyContent: 'center',
+            paddingTop: 100,
           }}>
           <TouchableOpacity>
-            <Image source={galleryImg} />
+            <Image source={galleryImg} style={styles.gallery} />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <Image source={playImg} />
+            <Image source={playImg} style={styles.play}/>
           </TouchableOpacity>
         </View>
 
-        <View style={{flex: 1}}>
+        <View style={{flex: 1.5}}>
           <TouchableOpacity
-            style={{
-              flexDirection: 'column',
-              paddingTop: 45,
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                backgroundColor: GREY,
-                width: 15,
-                height: 70,
-                borderRadius: 10,
-              }}></View>
-            <Text style={{color: 'white', fontSize: 12}}>Order</Text>
+            style={styles.bottomButton}>
+            <Image source={orderImg} style={styles.order} />
+            <Text style={{color: 'white', fontSize: 12}}>Friends</Text>
           </TouchableOpacity>
         </View>
-        <View style={{flex: 1}}>
+        <View style={{flex: 1.5}}>
           <TouchableOpacity
-            style={{
-              flexDirection: 'column',
-              paddingTop: 45,
-              alignItems: 'center',
-            }}>
-            <View
-              style={{
-                backgroundColor: GREY,
-                width: 15,
-                height: 70,
-                borderRadius: 10,
-              }}></View>
-            <Text style={{color: 'white', fontSize: 12}}>Friends</Text>
+            style={styles.bottomButton}>
+            <Image source={orderImg} style={styles.order} />
+            <Text style={{color: 'white', fontSize: 12}}>Help</Text>
           </TouchableOpacity>
         </View>
 
@@ -108,31 +85,12 @@ const CustomTabBar = (props) => {
             onPress={() => {
               dispatch(logout());
             }}
-            style={{
-              flexDirection: 'column',
-              paddingTop: 40,
-              alignItems: 'center',
-            }}>
+            style={styles.bottomButton}>
+              <Image source={accountImg} style={styles.order} />
             <Text style={{color: 'white', fontSize: 12}}>Account</Text>
-            <View
-              style={{
-                backgroundColor: GREY,
-                width: 50,
-                height: 50,
-                borderRadius: 25,
-                marginTop: 5,
-              }}></View>
+            
           </TouchableOpacity>
         </View>
-        <View
-          style={{
-            height: 1,
-            position: 'absolute',
-            width: '96%',
-            bottom: 5,
-            backgroundColor: DARK_BLUE,
-            left: '2%',
-          }}></View>
       </View>
     </View>
   );

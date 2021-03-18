@@ -8,13 +8,9 @@ import AppNavigator from '@navigation/AppNavigator';
 
 const App = () => {
   return (
-    <KeyboardAvoidingView style={{flexGrow: 1}}>
-      <SafeAreaProvider>
-        <SafeAreaView style={{flexGrow: 1}}>
+    <KeyboardAvoidingView style={{flexGrow: 1}}>  
           <StatusBar hidden />
-          <AppNavigator />
-        </SafeAreaView>
-      </SafeAreaProvider>
+          <AppNavigator />     
     </KeyboardAvoidingView>
   );
 };
