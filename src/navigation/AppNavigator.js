@@ -10,6 +10,8 @@ import {useDispatch, useSelector} from 'react-redux';
 
 import Home from '@screens/Home';
 import Settings from '@screens/Settings';
+import Cameras from '@screens/Cameras';
+
 import Auth from '@screens/Auth';
 import { NAV_HEADER_OPTION } from '@navigation/constants';
 import TabBar from './TabBar';
@@ -25,9 +27,8 @@ function NoTab(props) {
   useEffect(() => {
     if (token && token != 'NULL') {
       Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      console.log('======go to authed tab======', token);
       setTimeout(() => {
-        props.navigation.navigate('BottomTabbed',{name:'Settings'});  
+        props.navigation.navigate('BottomTabbed',{name:'Cameras'});  
       }, 1000);
     }
   }, [token]);
@@ -45,16 +46,16 @@ function BottomTabbed(props) {
   const token = useSelector((state) => state.auth.token);
   useEffect(() => {
     if (token && token == 'NULL') {
-      console.log('======go to No tab======', token);
       props.navigation.navigate('Auth');
       return
     }
   }, [token]);
   return (
     <BottomTab.Navigator
-      initialRouteName="Settings"
+      initialRouteName="Cameras"
       tabBar={(props) => <TabBar {...props} />}>
       <BottomTab.Screen name="Settings" component={Settings} />
+      <BottomTab.Screen name="Cameras" component={Cameras} />
     </BottomTab.Navigator>
   );
 }

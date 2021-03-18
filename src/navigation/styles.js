@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     bottomButton: {
         flexDirection: 'column',
-        paddingTop: 100,
+        marginTop: 100,
         alignItems: 'center',
     }
 })

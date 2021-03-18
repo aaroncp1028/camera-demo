@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register, login } from '@store/actions';
 
 import styles from './styles';
-import Toast from 'react-native-toast-message';
 
 const logo_img = require('@assets/images/logo.png');
 
@@ -31,6 +30,7 @@ const AuthScreen = ({navigation}) => {
   const [showPassword, setShowPassword] = useState(false)
   const error = useSelector((state) => state.auth.error?.data);
   const isNew = useSelector((state) => state.auth.isNew);
+
   const [formError, setFormError] = useState({
     password : [null],
     email: [null],
@@ -44,6 +44,7 @@ const AuthScreen = ({navigation}) => {
       setRegMode(true)
     }
   }, [isNew])
+
   useEffect(() => {
     if (isFocused) {
       Orientation.lockToPortrait();
