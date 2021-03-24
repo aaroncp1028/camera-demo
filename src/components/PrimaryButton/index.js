@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { Text, TouchableOpacity, View , SafeAreaView, Image} from 'react-native'
 import styles from './styles'
 
-const Item = ({ navigation, textSize, text, style, color }) => {
+const PrimaryButton = ({ navigation, textSize, text, style, color, onPress, foreColor }) => {
   return (
-    <TouchableOpacity style={style}>
-        <View style={styles.backButton}>
+    <TouchableOpacity style={style} activeOpacity={0.9} onPress={ onPress }>
+        <View style={[styles.backButton]}>
         </View>
-        <View style={styles.upButton}>
+        <View style={[styles.upButton, , {backgroundColor: foreColor}]}>
             <Text style={{fontSize: textSize, color, textAlign: 'center'}}>
             {text}
             </Text>
@@ -17,16 +17,20 @@ const Item = ({ navigation, textSize, text, style, color }) => {
   )
 }
 
-Item.propTypes = {
+PrimaryButton.propTypes = {
   navigation: PropTypes.object.isRequired,
   text: PropTypes.string.isRequired,
   textSize: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired
+  color: PropTypes.string.isRequired,
+  foreColor: PropTypes.string.isRequired,
+  onPress: PropTypes.func
 }
-Item.defaultProps = {
+PrimaryButton.defaultProps = {
     text: "Primary Button",
     textSize: 20,
-    color: 'white'
+    color: 'white',
+    onPress: ()=>null,
+    foreColor: '#FF0D9D'
 }
 
-export default Item
+export default PrimaryButton

@@ -8,9 +8,7 @@ import styles from './styles'
 
 const Item = ({ navigation, data }) => {
   return (
-    <TouchableOpacity 
-      activeOpacity={0.9}
-      style={{
+    <TouchableOpacity style={{
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',

@@ -11,7 +11,7 @@ import PrimaryButton from '@components/PrimaryButton';
 
 import CamList from './list'
 import styles from './styles'
-const title_cams = require('@assets/images/titles/cams.png')
+const pick_cam = require('@assets/images/titles/pick.png')
 
 const Cameras = ({ navigation }) => {
     const handleNewCam = useCallback(()=>{
@@ -21,33 +21,16 @@ const Cameras = ({ navigation }) => {
     const dispatch = useDispatch()
     const isFocused = useIsFocused()
     const cameras = useSelector(state => state.camera.cameras)
-    useEffect(() => {
-        if (isFocused) {
-            Orientation.lockToPortrait()
-            dispatch(getAvaiableCamera())
-        }
-        console.log("====camera list view=====", cameras)
-    }, [isFocused])
 
     return (
         <View>
             <SafeAreaView style={styles.container}>
-                <Image source={title_cams} style={{
+                <Image source={pick_cam} style={{
                     resizeMode: 'contain',
-                    width: "53%",
-                    alignSelf:"center"
-                }} />
-                <PrimaryButton 
-                    onPress={()=>handleNewCam()}
-                    style={{
-                    width: "33%",
-                    height: 50,
-                    marginBottom: 30,
-                    marginTop: 10,
+                    width: "90%",
                     alignSelf: 'center'
-                }}
-                    text={"NEW CAM"}
-                />
+                }} />
+              
                 <CamList list={cameras}/>
             </SafeAreaView>
         </View>

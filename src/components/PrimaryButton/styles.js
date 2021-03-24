@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   backButton:{
-    
         top: 10,
         left: 10,
         backgroundColor: "#9D98E7",

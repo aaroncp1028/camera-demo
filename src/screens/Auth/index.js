@@ -14,11 +14,13 @@ import Orientation from 'react-native-orientation-locker';
 import { useIsFocused } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { register, login } from '@store/actions';
-
+import PrimaryButton from '@components/PrimaryButton';
 import styles from './styles';
 
 const logo_img = require('@assets/images/logo.png');
-
+const welcome = require('@assets/images/titles/welcome.png')
+const login_img = require('@assets/images/titles/welcome.png')
+const signup_img = require('@assets/images/titles/welcome.png')
 const AuthScreen = ({navigation}) => {
   const isFocused = useIsFocused();
   const dispatch = useDispatch();
@@ -139,12 +141,12 @@ const AuthScreen = ({navigation}) => {
   const passwordRef = useRef(null);
 
   return (
-    <View style={{flexGrow: 1, backgroundColor: '#93a0e5'}}>
+    <View style={{flexGrow: 1, backgroundColor: '#6B62FF'}}>
       <View style={styles.container}>
         <ScrollView style={styles.scroll}>
           <View style={styles.box}>
-            <Text style={styles.title}>Welcome to Later</Text>
-            <Image style={styles.logo} source={logo_img}></Image>
+            
+            <Image style={styles.logo} source={welcome}></Image>
             <View style={styles.inputBox}>
               {regMode && (
                 <View style={styles.inputRow}>
@@ -185,10 +187,11 @@ const AuthScreen = ({navigation}) => {
                   onChangeText={handlePassword}></TextInput>
                 <BouncyCheckbox
                   isChecked={showPassword}
-                  textColor="#000"
+                  textStyle={{color: "white"}}
                   fillColor="grey"
                   borderRadius={0}
                   borderColor='grey'
+                  unfillColor='white'
                   text="Show password"
                   textDecoration={'false'}
                   style={{width: "95%"}}
@@ -196,25 +199,39 @@ const AuthScreen = ({navigation}) => {
                 />
               </View>
 
-              <View style={styles.inputRow}>
-                <TouchableOpacity
-                  style={styles.btnSignup}
-                  onPress={() => handleSubmit()}>
-                  <Text>
-                    {regMode ? 'Sign Up' : 'Log In'}
-                  </Text>
-                </TouchableOpacity>
-              </View>
 
-              <TouchableOpacity
-                style={[styles.inputRow]}
-                onPress={() => {
-                  setRegMode(!regMode);
-                  clearForm();
-                }}>
-                <Text style={styles.question}>{hintText()}</Text>
-              </TouchableOpacity>
+              <PrimaryButton 
+                    onPress={()=>{
+                      if(!regMode)
+                        handleSubmit()
+                      setRegMode(false)
+                    }}
+                    style={{
+                    width: "100%",
+                    height: 50,
+                    marginBottom: 30,
+                    marginTop: 10,
+                    alignSelf: 'center'
+                }}
+                    text={"D O P E"}
+                />
             </View>
+            <PrimaryButton 
+                    onPress={()=>{
+                      if(regMode)
+                        handleSubmit()
+                      setRegMode(true)  
+                    }}
+                    style={{
+                    width: "100%",
+                    height: 50,
+                    marginBottom: 30,
+                    marginTop: 10,
+                    alignSelf: 'center',
+                }}
+                    foreColor= '#2E2E2E'
+                    text={"HOME SKELETE"}
+                />
           </View>
         </ScrollView>
       </View>

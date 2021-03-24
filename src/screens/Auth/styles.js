@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     width: '96%',
     maxWidth: 500,
     maxHeight: PORT_SCREEN_HEIGHT - 100,
-    backgroundColor: '#d8d8d8',
+    
   },
   box: {
     padding : 10,
@@ -27,16 +27,14 @@ const styles = StyleSheet.create({
     width: '100%',
     maxWidth: 500,
     flexDirection:'column',
-    borderRadius: 2,
-    borderColor: "black",
-    borderWidth: 1
+   
   },
   inputBox: {
     flexDirection: 'column',
-    backgroundColor: 'white',
+    
     width: '98%',
-    borderWidth: 1,
-    borderColor: '#333',
+    
+    
     padding: 10,
     marginTop: 20,
 
@@ -51,15 +49,19 @@ const styles = StyleSheet.create({
     color: '#222',
     textAlign:'left',
     paddingRight: 10,
+    color: "white"
   },
   rowInput:{
     marginTop: 10,
+    padding: 5,
     width: "95%",
-    borderWidth : 1,
+    height: 40,
     paddingVertical: 3,
+    backgroundColor: 'white'
   },
   question:{
       textDecorationLine: 'underline',
+      color: 'white'
   },
   title: {
     fontSize: 25,
@@ -73,11 +75,12 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: "center",
       alignSelf: 'flex-start',
-      marginLeft: '2.5%'
+      marginLeft: '2.5%',
+      
   },
   logo:{
-      width : 100,
-      height: 100,
+      width : "100%",
+      
       resizeMode: 'contain'
   },
   errorText:{
