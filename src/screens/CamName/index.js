@@ -12,7 +12,7 @@ import PrimaryButton from '@components/PrimaryButton';
 import styles from './styles'
 const name_cam = require('@assets/images/titles/name_cam.png')
 
-const CamName = ({ navigation }) => {
+const Account = ({ navigation }) => {
     const handleNewCam = useCallback(()=>{
         console.log("==pressed=======")
         navigation.navigate('NewCam')
@@ -55,9 +55,9 @@ const CamName = ({ navigation }) => {
     )
 }
 
-CamName.propTypes = {
+Account.propTypes = {
     navigation: PropTypes.object.isRequired,
 }
-CamName.defaultProps = {}
+Account.defaultProps = {}
 
-export default CamName
+export default Account

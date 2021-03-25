@@ -14,6 +14,7 @@ import Cameras from '@screens/Cameras';
 import NewCam from '@screens/NewCam';
 import CamName from '@screens/CamName';
 import Auth from '@screens/Auth';
+import Account from '@screens/Account';
 import { NAV_HEADER_OPTION } from '@navigation/constants';
 import TabBar from './TabBar';
 import { Axios } from '@root/utils';
@@ -59,6 +60,7 @@ function BottomTabbed(props) {
       <BottomTab.Screen name="Cameras" component={Cameras} />
       <BottomTab.Screen name="NewCam" component={NewCam} />
       <BottomTab.Screen name="CamName" component={CamName} />
+      <BottomTab.Screen name="Account" component={Account} />
     </BottomTab.Navigator>
   );
 }

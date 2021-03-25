@@ -86,7 +86,8 @@ const CustomTabBar = (props) => {
         <View style={{ flex: 2 }}>
           <TouchableOpacity
             onPress={() => {
-              dispatch(logout());
+              // dispatch(logout());
+              navigation.navigate('Account')
             }}
             style={styles.bottomButton}>
             <Image source={accountImg} style={styles.order} />

@@ -252,7 +252,7 @@ const Home = ({navigation}) => {
         
         <View style={{flexGrow: 1}}></View>
 
-        <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+        {/* <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
           <TouchableOpacity
             style={styles.switchBtn}
             onPress={() => handleRatio()}></TouchableOpacity>
@@ -267,7 +267,7 @@ const Home = ({navigation}) => {
             }}
             onPress={() => handleShoot()}
           />
-        </View>
+        </View> */}
       </SafeAreaView>
     </>
   );
