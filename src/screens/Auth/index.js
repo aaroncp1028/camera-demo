@@ -216,22 +216,29 @@ const AuthScreen = ({navigation}) => {
                     text={"D O P E"}
                 />
             </View>
-            <PrimaryButton 
-                    onPress={()=>{
-                      if(regMode)
-                        handleSubmit()
-                      setRegMode(true)  
-                    }}
-                    style={{
-                    width: "100%",
-                    height: 50,
-                    marginBottom: 30,
-                    marginTop: 10,
-                    alignSelf: 'center',
-                }}
-                    foreColor= '#2E2E2E'
-                    text={"HOME SKELETE"}
-                />
+            <View style={{marginTop: 50}}>
+
+            </View>
+            <View style={{padding: 10, width: "100%"}}>
+              <PrimaryButton 
+                      onPress={()=>{
+                        if(regMode)
+                          handleSubmit()
+                        setRegMode(true)  
+                      }}
+                      style={{
+                      width: "100%",
+                      height: 50,
+                      marginBottom: 30,
+                      marginTop: 10,
+                      alignSelf: 'center',
+                      
+                  }}
+                      foreColor= '#2E2E2E'
+                      text={"HOME SKELETE"}
+                  />
+              </View>
+            
           </View>
         </ScrollView>
       </View>
