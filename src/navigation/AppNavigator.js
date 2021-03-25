@@ -12,6 +12,7 @@ import Home from '@screens/Home';
 import Settings from '@screens/Settings';
 import Cameras from '@screens/Cameras';
 import NewCam from '@screens/NewCam';
+import CamName from '@screens/CamName';
 import Auth from '@screens/Auth';
 import { NAV_HEADER_OPTION } from '@navigation/constants';
 import TabBar from './TabBar';
@@ -57,6 +58,7 @@ function BottomTabbed(props) {
       <BottomTab.Screen name="Settings" component={Settings} />
       <BottomTab.Screen name="Cameras" component={Cameras} />
       <BottomTab.Screen name="NewCam" component={NewCam} />
+      <BottomTab.Screen name="CamName" component={CamName} />
     </BottomTab.Navigator>
   );
 }

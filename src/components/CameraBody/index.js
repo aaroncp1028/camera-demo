@@ -23,7 +23,7 @@ import {
 import styles from './styles';
 
 const body_left = require('@assets/images/body-left.png')
-const body_main = require('@assets/images/body-center.png')
+const body_main = require('@assets/images/cam-body/tiger.png')
 const body_right = require('@assets/images/body-right.png')
 
 const CameraBody = () => {

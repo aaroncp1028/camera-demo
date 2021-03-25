@@ -31,7 +31,7 @@ const Cameras = ({ navigation }) => {
                     alignSelf: 'center'
                 }} />
               
-                <CamList list={cameras}/>
+                <CamList list={cameras} navigation={navigation}/>
             </SafeAreaView>
         </View>
     )

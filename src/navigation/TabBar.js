@@ -43,7 +43,7 @@ const CustomTabBar = (props) => {
         <View style={{ position: 'absolute' }}>
           <TouchableOpacity
             onPress={() => {
-              console.log("=======gear press=======")
+              navigation.navigate('Cameras')
             }}
             style={{
               alignItems: 'center',

@@ -6,9 +6,11 @@ import { Text, TouchableOpacity, View , SafeAreaView, Image} from 'react-native'
 import styles from './styles'
 
 
-const Item = ({ navigation, data }) => {
+const Item = ({ navigation, data, onTap }) => {
   return (
-    <TouchableOpacity style={{
+    <TouchableOpacity 
+      onPress={onTap}
+    style={{
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
@@ -35,7 +37,10 @@ const Item = ({ navigation, data }) => {
 
 Item.propTypes = {
   navigation: PropTypes.object.isRequired,
+  onTap: PropTypes.func
 }
-Item.defaultProps = {}
+Item.defaultProps = {
+  onTap: ()=>{}
+}
 
 export default Item

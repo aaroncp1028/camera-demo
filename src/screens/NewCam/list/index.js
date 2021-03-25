@@ -22,7 +22,9 @@ const CamList = ({ navigation, list }) => {
                             width: "50%",
                             padding: 5,
                         }}>
-                            <Item data={item} />
+                            <Item data={item} onTap={()=>{
+                                navigation.navigate('CamName')
+                            }}/>
                         </View>)
                     )
                 })
